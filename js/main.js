@@ -55,6 +55,7 @@ window.onload = function(){
 
 		// First slide!
 		slideshow.nextSlide();
+		slideshow.nextSlide();
 
 	});
 
