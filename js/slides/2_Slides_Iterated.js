@@ -161,22 +161,22 @@ SLIDES.push({
 			{id:"tft", num:1},
 		];*/
 
-		// var ROUNDS = [ // and min & max score...
-		// 	{id:"tft", num:5}, // min 2, max 11
-		// 	{id:"all_d", num:4}, // min -4, max 0
-		// 	{id:"all_c", num:4}, // min 8, max 12
-		// 	{id:"grudge", num:5}, // min -1, max 11
-		// 	{id:"prober", num:7} // min 2, max 15
-		// ]; // TOTAL... MIN 7, MAX 49
+		var ROUNDS = [ // and min & max score...
+			{id:"tft", num:5}, // min 2, max 11
+			{id:"all_d", num:4}, // min -4, max 0
+			{id:"all_c", num:4}, // min 8, max 12
+			{id:"grudge", num:5}, // min -1, max 11
+			{id:"prober", num:7} // min 2, max 15
+		]; // TOTAL... MIN 7, MAX 49
 
 		// for test!!!!!!!!!!1
-		var ROUNDS = [ // and min & max score...
-			{id:"tft", num:1}, // min 2, max 11
-			{id:"all_d", num:1}, // min -4, max 0
-			{id:"all_c", num:1}, // min 8, max 12
-			{id:"grudge", num:1}, // min -1, max 11
-			{id:"prober", num:1} // min 2, max 15
-		]; // TOTAL... MIN 7, MAX 49
+		// var ROUNDS = [ // and min & max score...
+		// 	{id:"tft", num:1}, // min 2, max 11
+		// 	{id:"all_d", num:1}, // min -4, max 0
+		// 	{id:"all_c", num:1}, // min 8, max 12
+		// 	{id:"grudge", num:1}, // min -1, max 11
+		// 	{id:"prober", num:1} // min 2, max 15
+		// ]; // TOTAL... MIN 7, MAX 49
 		ROUND_INDEX = 0;
 		ROUND_NUM = 0;
 
