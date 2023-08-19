@@ -30,7 +30,8 @@ window.onload = function(){
 
 			// [FOR DEBUGGING]
 			publish("slideshow/next");
-			//publish("slideshow/scratch", ["credits"]);
+			publish("slideshow/next");
+			publish("slideshow/scratch");
 
 		});
 
@@ -56,6 +57,7 @@ window.onload = function(){
 		// First slide!
 		slideshow.nextSlide();
 		slideshow.nextSlide();
+
 
 	});
 
