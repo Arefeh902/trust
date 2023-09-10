@@ -214,127 +214,27 @@ SLIDES.push({
 	},
 	onend: function(self){
 		self.remove("button");
+		self.clear()
 	}
 });
 
-// (Yup, even w Grudgers & Detectives)
+
 SLIDES.push({
 	onstart: function(self){
 
 		var o = self.objects;
+
 		
-		// SCRATCH IN TOURNAMENT
-		Scratcher.smallScratch(0, 0, 480, 540, function(){
-			Tournament.resetGlobalVariables();
-			Tournament.INITIAL_AGENTS = [
-				{strategy:"all_c", count:5},
-				{strategy:"all_d", count:5},
-				{strategy:"tft", count:5},
-				{strategy:"grudge", count:5},
-				{strategy:"prober", count:6}
-			];
-			o.tournament.reset();
-		});
-
-		// The same with grudger & detetive!
-		o.text.setTextID("evo_10");
-		_hide(o.text); _fadeIn(o.text, 1000);
-
-		// Button: start/stop
-		var isPlaying = false;
 		self.add({
-			id:"autoplay", type:"Button", x:510, y:100, 
-			text_id:"evo_autoplay", size:"long",
-			onclick: function(){
-				if(!isPlaying){
-					o.autoplay.setText("evo_autoplay_stop");
-					publish("tournament/autoplay/start");
-					isPlaying = true;
-				}else{
-					o.autoplay.setText("evo_autoplay");
-					publish("tournament/autoplay/stop");
-					isPlaying = false;
-				}
-			}
-		});
-		_hide(o.autoplay); _fadeIn(o.autoplay, 1200);
-
-		// Listen...
-		var step = 0;
-		listen(_, "tournament/step/completed", function(aahhhh){
-			step++;
-			if(step==13){
-				_goOn();
-			}
+			id:"btmWords", type:"TextBox", text_id:"oneoff_last_question",
+			x:130, y:300, width:700, height:100, align:"center"
 		});
 
-		var _goOn = function(){
-
-			// Text followup (hidden)
-			self.add({
-				id:"text2", type:"TextBox",
-				x:510, y:180, width:450, height:500,
-				text_id:"evo_10_followup"
-			});
-			_hide(o.text2); _fadeIn(o.text2, 400);
-
-			// Button: next (hidden)
-			self.add({
-				id:"next", type:"Button", x:510, y:450, 
-				text_id:"evo_10_btn", size:"long",
-				message: "slideshow/next"
-			});
-			_hide(o.next); _fadeIn(o.next, 600);
-
-		};
+		_hide(o.btmWords), _fadeIn(o.btmWords, 150+10);
 
 	},
+
 	onend: function(self){
-		unlisten(_);
-		self.remove("autoplay");
-		self.remove("text2");
-		self.remove("next");
+		self.clear();
 	}
 });
-
-// Problem 1: Number of interactions
-SLIDES.push({
-	onstart: function(self){
-		var o = self.objects;
-
-		// FART SOUNDS
-		Loader.sounds.fart.play();
-
-		// New tournament...
-		Tournament.resetGlobalVariables();
-		Tournament.INITIAL_AGENTS = [
-			{strategy:"all_d", count:24},
-			{strategy:"tft", count:1}
-		];
-		o.tournament.reset();
-
-		// Text
-		o.text.setTextID("evo_11");
-		//_hide(o.text); _fadeIn(o.text, 100);
-
-		// Next
-		self.add({
-			id:"next", type:"Button", x:510, y:425, 
-			text_id:"evo_11_btn", size:"long",
-			message: "slideshow/next"
-		});
-		//_hide(o.next); _fadeIn(o.next, 200);
-
-	},
-	onend: function(self){
-		self.remove("text");
-		self.remove("next");
-		_.clear();
-	}
-});
-
-// Problem 2: Payoffs
-
-// Teaser...
-
-
