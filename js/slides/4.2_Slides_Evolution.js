@@ -69,6 +69,15 @@ SLIDES.push({
 			});
 			_hide(o.text2); _fadeIn(o.text2, 400);
 
+            
+			// Button: next (hidden)
+			self.add({
+				id:"next", type:"Button", x:510, y:450, 
+				text_id:"evo_10_btn", size:"long",
+				message: "slideshow/next"
+			});
+			_hide(o.next); _fadeIn(o.next, 600);
+
 		};
 
 	},
@@ -76,6 +85,26 @@ SLIDES.push({
 		unlisten(_);
 		self.remove("autoplay");
 		self.remove("text2");
+        self.clear();
+	}
+},
+{
+	onstart: function(self){
+
+		var o = self.objects;
+
+		
+		self.add({
+			id:"btmWords", type:"TextBox", text_id:"oneoff_last_question",
+			x:130, y:300, width:700, height:100, align:"center"
+		});
+
+		_hide(o.btmWords), _fadeIn(o.btmWords, 150+10);
+
+	},
+
+	onend: function(self){
+		self.clear();
 	}
 });
 
