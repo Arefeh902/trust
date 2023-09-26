@@ -274,7 +274,7 @@ SLIDES.push({
 		self.add({
 			id:"score3", type:"TextBox",
 			x:290, y:62, width:639, height:123,
-			text: Words.get(scoreTextID)+" "+Words.get("iterated_score_end")+"<br><br>"+Words.get("oneoff_last_question")
+			text: Words.get(scoreTextID)+" "+"<br><br>"+Words.get("oneoff_last_question")
 		});
 
 		//////////////////////////////
