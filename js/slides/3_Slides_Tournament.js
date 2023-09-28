@@ -239,7 +239,7 @@ SLIDES.push({
 
 		
 		self.add({
-			id:"btmWords", type:"TextBox", text_id:"oneoff_last_questionـv2",
+			id:"btmWords", type:"TextBox", text_id:"oneoff_last_question_v2",
 			x:130, y:300, width:700, height:100, align:"center"
 		});
 
