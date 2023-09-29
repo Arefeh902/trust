@@ -1,159 +1,3 @@
-// [FOR DEBUGGING]
-
-// One-off with noise
-SLIDES.push({
-	id: "noise",
-	onstart: function(self){
-
-		var o = self.objects;
-
-		Tournament.resetGlobalVariables();
-
-		// Iterated Simulation
-		self.add({id:"iterated", type:"Iterated", x:130, y:133});
-		o.iterated.dehighlightPayoff();
-		o.iterated.playerA.chooseHat("tft");
-
-		// Words on top & bottom
-		self.add({
-			id:"topWords", type:"TextBox", text_id:"noise_1",
-			x:130, y:35, width:700, height:100, align:"center"
-		});
-		self.add({
-			id:"btmWords", type:"TextBox", text_id:"noise_1_end",
-			x:130, y:410, width:700, height:100, align:"center"
-		});
-
-		// STAGES
-		var STAGES = [
-			{button:"cooperate", message:"cooperate"},
-			{button:"cooperate", message:"TRIP"},
-			{button:"cooperate", message:"cooperate"},
-			{button:"cheat", message:"cheat"}
-		];
-		var STAGE_INDEX = 0;
-
-		// ONE Button
-		self.add({
-			id:"button", type:"Button",
-			x:383, y:463, text_id:"label_cooperate", uppercase:true,
-			onclick: function(){
-
-				// Make sim go
-				var s = STAGES[STAGE_INDEX];
-				publish("iterated/"+s.message);
-				o.button.deactivate();
-
-				// Hide words
-				_hide(o.topWords); 
-				_hide(o.btmWords); 
-
-			}
-		});
-
-		// Re-activate...
-		var _foreverWar = false;
-		var _foreverMove = "cheat";
-		listen(self, "iterated/round/end", function(){
-
-			if(_foreverWar){
-				publish("iterated/"+_foreverMove);
-				if(_foreverMove=="cheat") _foreverMove="cooperate";
-				else if(_foreverMove=="cooperate") _foreverMove="cheat";
-			}else{
-
-				STAGE_INDEX++;
-
-				// New words
-				o.topWords.setTextID("noise_"+(STAGE_INDEX+1));
-				o.btmWords.setTextID("noise_"+(STAGE_INDEX+1)+"_end");
-				_fadeIn(o.topWords, 100);
-				_fadeIn(o.btmWords, 300);
-
-				// Next stage
-				if(STAGE_INDEX>=STAGES.length){
-
-					publish("iterated/cooperate");
-					_foreverWar = true;
-					
-					// The FINAL buttons... remove the button & put it back in.
-					self.remove("button");
-					self.add({
-						id:"button", type:"Button",
-						x:304, y:463, text_id:"noise_5_btn", size:"long",
-						message: "slideshow/scratch"
-					});
-
-				}else{
-
-					// Reactivate buttons
-					var s = STAGES[STAGE_INDEX];
-					o.button.setText("label_"+s.button);
-					o.button.activate();
-
-				}
-
-			}
-
-		});
-
-	},
-	onend: function(self){
-		unlisten(self);
-		self.clear();
-	}
-});
-
-// New characters
-SLIDES.push({
-
-	onstart: function(self){
-
-		// WORDS
-		self.add({
-			id:"score1", type:"TextBox",
-			x:160, y:20, width:640,
-			text_id:"noise_characters"
-		});
-
-		// CHARS
-		self.add({
-			id:"char_tf2t", type:"CharacterTextBox",
-			x:160, y:70, width:640,
-			character: "tf2t"
-		});
-		self.add({
-			id:"char_pavlov", type:"CharacterTextBox",
-			x:160, y:190, width:640,
-			character: "pavlov"
-		});
-		self.add({
-			id:"char_random", type:"CharacterTextBox",
-			x:160, y:320, width:640,
-			character: "random"
-		});
-
-		// Next...
-		self.add({
-			id:"next", type:"TextBox",
-			x:160, y:420, width:640, align:"right",
-			text_id: "noise_characters_end"
-		});
-
-		// Next Button!
-		self.add({
-			id:"next_button", type:"Button", x:460, y:460, size:"long",
-			text_id:"noise_characters_btn",
-			message:"slideshow/scratch"
-		});
-
-	},
-	onend: function(self){
-		self.clear();
-	}
-
-});
-
 // Tournament: simpleton wins
 SLIDES.push({
 	
@@ -431,110 +275,23 @@ SLIDES.push({
 		self.remove("text_next");
 		self.remove("btn_next");
 		unlisten(_.misc);
+        self.clear();
 	}
-});
-
-SLIDES.push({
+}, {
 	onstart: function(self){
 
 		var o = self.objects;
-		_.misc = {};
-
-		// Words
-		o.text.setTextID("noise_evo_5");
-		_hide(o.text); _fadeIn(o.text, 100);
-
-		// Tournament
-		o.tournament.reset();
-
-		// Slider!
-		var x = 510;
-		var y = 200;
+		
 		self.add({
-			id:"noiseLabel", type:"TextBox",
-			x:x, y:y, width:450, noSelect:true
+			id:"btmWords", type:"TextBox", text_id:"oneoff_last_question",
+			x:130, y:300, width:700, height:100, align:"center"
 		});
-		self.add({
-			id:"noiseSlider", type:"Slider",
-			x:x, y:y+55, width:450,
-			min:0.00, max:0.50, step:0.01,
-			message: "rules/noise"
-		});
-		var _updateLabel = function(value){
-			value = Math.round(value*100);
-			var words = Words.get("sandbox_rules_3");
-			words = words.replace(/\[N\]/g, value+""); // replace [N] with the number value
-			o.noiseLabel.setText("<i>"+words+"</i>");
-		};
-		listen(_.misc, "rules/noise", function(value){
-			_updateLabel(value);
-			o.tournament.reset();
-		});
-		o.noiseSlider.setValue(0.05);
-		_updateLabel(0.05);
-		_hide(o.noiseLabel); _fadeIn(o.noiseLabel, 300);
-		_hide(o.noiseSlider); _fadeIn(o.noiseSlider, 300);
 
-		// Continue whenever you want to...
-		listen(_.misc, "tournament/autoplay/start",function(){
-			if(_showContinue) _showContinue();
-		});
-		var _showContinue = function(){
-			_showContinue = null;
-			self.add({
-				id:"continueLabel", type:"TextBox",
-				x:565, y:405, width:400,
-				align:"right", color:"#aaa", size:17,
-				text_id:"noise_evo_5_continue"
-			});
-			self.add({
-				id:"continueButton", type:"Button",
-				x:855, y:440, size:"short",
-				text_id:"label_continue",
-				message: "slideshow/next"
-			});
-			_hide(o.continueLabel); _fadeIn(o.continueLabel, 100);
-			_hide(o.continueButton); _fadeIn(o.continueButton, 100);
-		};
+		_hide(o.btmWords), _fadeIn(o.btmWords, 150+10);
 
 	},
-	onend: function(self){
-		unlisten(_.misc);
-		self.remove("noiseLabel");
-		self.remove("noiseSlider");
-		var o = self.objects;
-		if(o.continueLabel) self.remove("continueLabel");
-		if(o.continueButton) self.remove("continueButton");
-		self.remove("text");
-	}
-});
 
-SLIDES.push({
-	onstart: function(self){
-
-		var o = self.objects;
-
-		// Words
-		self.add({
-			id:"text", type:"TextBox",
-			x:510, y:10, width:450, height:500,
-			text_id:"noise_evo_6"
-		});
-		_hide(o.text); _fadeIn(o.text, 100);
-
-		// Next button
-		self.add({
-			id:"button", type:"Button", x:510, y:466, 
-			text_id:"noise_evo_6_btn", size:"long",
-			message:"slideshow/scratch"
-		});
-		_hide(o.button); _fadeIn(o.button, 500);
-
-	},
 	onend: function(self){
 		self.clear();
-		unlisten(self);
-		unlisten(_);
-		unlisten(_.misc);
 	}
 });
