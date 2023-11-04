@@ -1,5 +1,5 @@
 SLIDES.push({
-	id: "distrust",
+	id: "distrust1",
 
 	onstart: function(self){
 		

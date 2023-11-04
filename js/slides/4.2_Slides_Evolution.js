@@ -6,6 +6,7 @@ Loader.addToManifest(Loader.manifest,{
 
 // (Yup, even w Grudgers & Detectives)
 SLIDES.push({
+	id: "evolution2",
 	onstart: function(self){
 
 		var o = self.objects;

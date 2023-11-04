@@ -1,4 +1,6 @@
 SLIDES.push({
+	id: "noise3",
+
 	onstart: function(self){
 
 		var o = self.objects;

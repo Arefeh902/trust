@@ -22,7 +22,6 @@ Many thanks again!
 ~ Nicky Case
 
 -->
-<!doctype>
 <html lang="fa" dir="rtl">
 <head>
 
@@ -34,6 +33,8 @@ Many thanks again!
 	<meta charset="utf-8">
 	<link rel="icon" type="image/png" href="favicon.png">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
 	<!-- TO TRANSLATE: "name", "description" -->
 	<meta itemprop="name" content="تکامل اعتماد">
 	<meta itemprop="description" content="یک راهنمای تعاملی برای نظریه بازی درباره اینکه چرا به یکدیگر اعتماد می‌کنیم">
@@ -55,8 +56,8 @@ Many thanks again!
 	<meta property="og:description" content="یک راهنمای تعاملی برای نظریه بازی درباره اینکه چرا به یکدیگر اعتماد می‌کنیم">
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="css/slides.css?v7">
-	<link rel="stylesheet" href="css/balloon.css?v7">
+	<link rel="stylesheet" href="css/slides.css">
+	<link rel="stylesheet" href="css/balloon.css">
 
 </head>
 <body>
@@ -67,84 +68,90 @@ Many thanks again!
 			<div id="scratcher"></div>
 		</div>
 	</div>
-	<div style="display:none" id="footer">
-		<div id="sound" sound="on" class="no-select">
-			<div id="sound_icon"></div>
-			<div id="sound_on">روشن</div> <!-- TRANSLATE THIS -->
-			<div id="sound_off">خاموش</div> <!-- TRANSLATE THIS -->
-		</div>
-		<div id="select"></div>
-
-		<!-- TRANSLATE "title" & "text". Make sure it's less than 112 characters, for Twitter's sake -->
-		<!-- Also, "link" will be changed later to whatever the link for the translated version will be. -->
-		<sharing title="تکامل اعتماد"
-				 text="چرا آدمها کمتر به هم اعتماد می‌کنند؟ راه چاره چیست؟ راهنمای تعاملی اعتماد در نظریه بازی:"
-				 link="https://hamed.github.io/trust/"></sharing>
-
-	</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-385494-12', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<!-- Twitter universal website tag code -->
-<script>
-!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
-a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-// Insert Twitter Pixel ID and Standard Event data below
-twq('init','o14uo');
-twq('track','PageView');
-</script>
-<!-- End Twitter universal website tag code -->
-
 </body>
 </html>
 
 <!-- Libraries -->
-<script src="js/lib/helpers.js?v7"></script>
-<script src="js/lib/pegasus.js?v7"></script>
+<script src="js/lib/helpers.js"></script>
+<script src="js/lib/pegasus.js"></script>
 <script>var c_ = {};</script>
-<script src="js/lib/minpubsub.src.js?v7"></script>
-<script src="js/lib/q.js?v7"></script>
-<script src="js/lib/pixi.min.js?v7"></script>
-<script src="js/lib/howler.js?v7"></script>
+<script src="js/lib/minpubsub.src.js"></script>
+<script src="js/lib/q.js"></script>
+<script src="js/lib/pixi.min.js"></script>
+<script src="js/lib/howler.js"></script>
 <script>var createjs = window;</script>
-<script src="js/lib/tweenjs-0.6.2.min.js?v7"></script>
+<script src="js/lib/tweenjs-0.6.2.min.js"></script>
 <script>Ticker.framerate=60; Ticker.paused=true;</script>
-<script src="js/lib/sharing.js?v7"></script>
 
 <!-- Core Engine -->
-<script src="js/core/Loader.js?v7"></script>
-<script src="js/core/Slideshow.js?v7"></script>
-<script src="js/core/SlideSelect.js?v7"></script>
-<script src="js/core/Button.js?v7"></script>
-<script src="js/core/TextBox.js?v7"></script>
-<script src="js/core/Words.js?v7"></script>
-<script src="js/core/IncDecNumber.js?v7"></script>
-<script src="js/core/Slider.js?v7"></script>
-<script src="js/core/Scratcher.js?v7"></script>
-<script src="js/core/Background.js?v7"></script>
-<script src="js/core/ImageBox.js?v7"></script>
-<script src="js/core/PayoffsUI.js?v7"></script>
+<script src="js/core/Loader.js"></script>
+<script src="js/core/Slideshow.js"></script>
+<script src="js/core/SlideSelect.js"></script>
+<script src="js/core/Button.js"></script>
+<script src="js/core/TextBox.js"></script>
+<script src="js/core/Words.js"></script>
+<script src="js/core/IncDecNumber.js"></script>
+<script src="js/core/Slider.js"></script>
+<script src="js/core/Scratcher.js"></script>
+<script src="js/core/Background.js"></script>
+<script src="js/core/ImageBox.js"></script>
+<script src="js/core/PayoffsUI.js"></script>
 
 <!-- Simulations -->
-<script src="js/sims/Splash.js?v7"></script>
-<script src="js/sims/PD.js?v7"></script>
-<script src="js/sims/Iterated.js?v7"></script>
-<script src="js/sims/Tournament.js?v7"></script>
-<script src="js/sims/SandboxUI.js?v7"></script>
+<script src="js/sims/Splash.js"></script>
+<script src="js/sims/PD.js"></script>
+<script src="js/sims/Iterated.js"></script>
+<script src="js/sims/Tournament.js"></script>
+<script src="js/sims/SandboxUI.js"></script>
 
 <!-- Slides -->
-<script src="js/slides/0_Slides_Intro.js?v7"></script>
-<script src="js/slides/6.3_Slides_Noise.js?v7"></script>
+<script src="js/slides/6.2_Slides_Noise.js"></script>
 
 <!-- Main Code -->
-<script src="js/main.js?v7"></script>
+<script src="js/main.js"></script>
 
+<script>
+	var slideshow, slideSelect;
+	window.onload = function(){
+		// PRELOADER
+		Q.all([
+			Loader.loadAssets(Loader.manifestPreload),
+			Words.convert("words.html")
+		]).then(function(){
+			// CHANGE DOM
+			document.body.removeChild($("#preloader"));
+			$("#main").style.display = "block";
+	
+			const handleWindowResize = () => {
+				var width = document.getElementById('slideshow').clientWidth;
+				var height = document.getElementById('slideshow').clientHeight;
+				var windowWidth = document.getElementById('main').clientWidth;
+				var windowHeight = document.getElementById('main').clientHeight;
+				var r = 1;
+				r = Math.min(windowWidth / width, windowHeight / height, 1)
+				$("#slideshow").style.transform = `scale(${r})`;
+			}
+			handleWindowResize();
+			window.addEventListener('resize', handleWindowResize, true);
+	
+			// Slideshow
+			slideshow = new Slideshow({
+				dom: $("#slideshow"),
+				slides: SLIDES
+			});
+			// LOAD REAL THINGS
+			Loader.loadAssets(
+				Loader.manifest,
+				function(){
+					publish("preloader/done");
+				},
+				function(ratio){
+					publish("preloader/progress", [ratio]);
+				}
+				).then(()=>{
+					Scratcher.scratch('noise2');
+				});
+		});
+	};
+</script>
+	

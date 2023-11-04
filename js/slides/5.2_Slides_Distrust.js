@@ -1,5 +1,7 @@
 // Change PAYOFFS
 SLIDES.push({
+	id: "distrust2",
+
 	onstart: function(self){
 
         var o = self.objects;

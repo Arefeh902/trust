@@ -2,6 +2,7 @@
 SLIDES.push({
 	
 	//id:"noise",// [FOR DEBUGGING]
+	id: "noise2",
 	
 	onstart: function(self){
 

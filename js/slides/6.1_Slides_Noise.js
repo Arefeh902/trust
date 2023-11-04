@@ -2,7 +2,7 @@
 
 // One-off with noise
 SLIDES.push({
-	id: "noise",
+	id: "noise1",
 	onstart: function(self){
 
 		var o = self.objects;
